@@ -8,7 +8,7 @@ while true;do
     count=`ps -ef|grep httpd|grep -v grep`
     if [ "$?" != "0" ];then
 
-curl http://sc.ftqq.com/$Key.send?text=nginx-is-Boom.&desp=ip:$ip
+curl http://sc.ftqq.com/$Key.send?text=httpd-is-Boom.&desp=ip:$ip
 
 else
 echo "nothings"

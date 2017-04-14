@@ -24,21 +24,17 @@
 
  Key=''
 
- function do_check() {
-     curl http://sc.ftqq.com/$Key.send?text=$1&desp=$ip
- }
-
 # Monitor CPU load.
 
  if [ $CPUUsage -ge 90 ];then
 
 #  kill -9 $ProcessNum 报警开始
 
- Text='$time Process $Command occupies too large CPU space'
+ Text=$time' Process '$Command' occupies too large CPU space'
 
  echo $Text >> /var/log/cpu_monitor.log
 
- do_check Text
+ curl http://sc.ftqq.com/$Key.send?text=$Text&desp=$ip
 
  fi
 
@@ -48,11 +44,11 @@
 
 #  kill -9 $ProcessNum  报警开始
 
- Text='$time Memory $Command occupies too large memory space'
+ Text=$time' Memory '$Command' occupies too large memory space'
 
  echo $Text >> /var/log/mem_monitor.log
 
- do_check Text
+ curl http://sc.ftqq.com/$Key.send?text=$Text&desp=$ip
 
  fi
 
@@ -62,11 +58,11 @@
 
 #  kill -9 $ProcessNum  报警开始
 
- Text='$time Process $Command is zombie process and was killed.'
+ Text=$time' Process' $Command 'is zombie process and was killed.'
 
  echo $Text >> /var/log/zombie_monotor.log
 
- do_check Text
+ curl http://sc.ftqq.com/$Key.send?text=$Text&desp=$ip
 
  fi
 
@@ -90,11 +86,11 @@
 
  # 磁盘90%报警
 
- Text='$time The partitipn which the directory $DirName mounted on occupies too large space ,please check it.'
+ Text=$time' The partitipn which the directory' $DirName 'mounted on occupies too large space ,please check it.'
 
- echo Text >> /var/log/disk_monitor.log
+ echo $Text >> /var/log/disk_monitor.log
 
- do_check Text
+  curl http://sc.ftqq.com/$Key.send?text=$Text&desp=$ip
 
  fi
 

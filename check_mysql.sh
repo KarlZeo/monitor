@@ -8,7 +8,7 @@ while true;do
     count=`ps -ef|grep mysql|grep -v grep`
     if [ "$?" != "0" ];then
 
-curl http://sc.ftqq.com/$Key.send?text=nginx-is-Boom.&desp=ip:$ip
+curl http://sc.ftqq.com/$Key.send?text=mysql-is-Boom.&desp=ip:$ip
 
 else
 echo "nothings"
