@@ -4,7 +4,7 @@
 
  time=`date +"%Y-%m-%d %H:%M:%S"`
 
- ip='ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/''
+ ip=$(/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v 10.|grep -v inet6|awk '{print $2}'|tr -d "addr:")
 
  ps aux | grep -v 'USER' >> /tmp/temp.txt
 
