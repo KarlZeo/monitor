@@ -5,7 +5,7 @@
  Key=''
 
 while true;do
-    count=`ps -ef|grep nginx|grep -v grep`
+    count=`ps -ef|grep php-fpm|grep -v grep`
     if [ "$?" != "0" ];then
 
 curl http://sc.ftqq.com/$Key.send?text=nginx-is-Boom.&desp=ip:$ip
